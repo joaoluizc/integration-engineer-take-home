@@ -22,9 +22,31 @@ function App() {
 
   /* Complete the following functions to hit endpoints on your server */
   const createTask = async () => {
+    const response = await fetch('http://localhost:8000/tasks', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+    if (response.ok) {
+      fetchTasks();
+    } else {
+      const data = await response.json();
+      console.error('Failed to create task', data.message);
+    }
   };
 
   const deleteTask = async (id: string) => {
+    const response = await fetch(`http://localhost:8000/tasks/${id}`, {
+      method: 'DELETE',
+    });
+    if (response.ok) {
+      fetchTasks();
+    } else {
+      const data = await response.json();
+      console.error('Failed to delete task', data.message);
+    }
   };
 
 
@@ -36,7 +58,7 @@ function App() {
           <li key={task.id}>
             <h3>{task.title}</h3>
             <p>{task.description}</p>
-            <button onClick={() => deleteTask(task.id)}>Delete</button>
+            <button onClick={() => deleteTask(String(task.id))}>Delete</button>
           </li>
         ))}
       </ul>
