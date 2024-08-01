@@ -50,3 +50,12 @@ Regards,
 The Duda Solutions Engineering Team
 
 ## Add any instructions to get your submission running below this line.
+
+The application uses nodemon for the backend and Vite for the frontend.
+
+To run it, you'll need to open two terminals:
+
+1. In one terminal in the root of the application, run ```npm run dev```
+2. In the other terminal, navigate to the frontend directory by running ```cd frontend``` and then run ```npm run dev``` as well
+
+With this, the back and frontend will be running simultaneously. In the frontend terminal, simpy type ```o``` and hit enter to open the app in your browser. You'll ba able to interact with the application from there.
